@@ -9,6 +9,8 @@ import { UserdetailsComponent } from './components/userdetails/userdetails.compo
 import { Router } from '@angular/router';
 import { RouterModule,Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { MessageService } from './services/message.service';
 
 const appRoutes:Routes=[
 
@@ -34,7 +36,7 @@ const appRoutes:Routes=[
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

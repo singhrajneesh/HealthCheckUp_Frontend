@@ -4,16 +4,18 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { PatientDataService } from './../../services/patient-data.service';
+import { MessageService } from './../../services/message.service';
 
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.css'],
-  providers:[PatientDataService]
+  providers:[PatientDataService, MessageService]
 })
 export class NewUserComponent implements OnInit {
 
-  constructor(private patientdataservice : PatientDataService ) { };
+  constructor(private patientdataservice : PatientDataService,
+      private messageService: MessageService ) { };
 
   ngOnInit() {
   }
@@ -76,6 +78,9 @@ export class NewUserComponent implements OnInit {
 
   			  totalSimilarityComplex: number;
 
+          x:number;
+          diet:string;
+
   	add(){
   		let obj= {
   		"emailId":this.emailId,
@@ -132,6 +137,15 @@ export class NewUserComponent implements OnInit {
   		"plateletSimilarity":0,
   		"totalSimilarityComplex":0  };
   		this.patientdataservice.postPatientDetails(obj).subscribe((res) =>{
+        this.messageService.showSaved();
   		},(res:Response) =>{})
+      this.getdiet(obj);
+    }
+
+    getdiet(obj)
+    { this.x=1;
+      this.patientdataservice.getDiet(obj).subscribe((res) =>{
+        this.diet=res.diet;
+      },(res:Response) =>{})
     }
   }

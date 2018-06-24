@@ -30,4 +30,10 @@ return this.http.put("http://localhost:8080/updatepatient",obj,)
 (error)=>{})
 }
 
+getDiet(obj){
+return this.http.post("http://localhost:8080/getdiet",obj)
+.map(data => data.json(),
+(error)=>{})
+}
+
 }

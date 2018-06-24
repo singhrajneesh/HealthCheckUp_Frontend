@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientDataService } from './../../services/patient-data.service';
+import { MessageService } from './../../services/message.service';
 
 @Component({
   selector: 'app-userdetails',
   templateUrl: './userdetails.component.html',
   styleUrls: ['./userdetails.component.css'],
-  providers:[PatientDataService]
+  providers:[PatientDataService,MessageService]
 })
 export class UserdetailsComponent implements OnInit {
 
@@ -73,7 +74,8 @@ export class UserdetailsComponent implements OnInit {
   totalSimilarityComplex: number;
 
 
-  constructor(private patientdataservice : PatientDataService) { }
+  constructor(private patientdataservice : PatientDataService,
+    private messageService: MessageService) { }
 
   ngOnInit() {
   }
@@ -282,6 +284,7 @@ export class UserdetailsComponent implements OnInit {
       "totalSimilarityComplex":this.totalSimilarityComplex };
       this.patientdataservice.putPatientDetails(obj).subscribe((res) =>{
         this.get();
+        this.messageService.showUpdated();
       },(res:Response) =>{})
     }
     }
