@@ -80,6 +80,7 @@ export class NewUserComponent implements OnInit {
 
           x:number=0;
           diet:string;
+          disease:string;
 
   	add(){
   		let obj= {
@@ -136,12 +137,14 @@ export class NewUserComponent implements OnInit {
   		"tempSimilarity":0,
   		"plateletSimilarity":0,
   		"totalSimilarityComplex":0,
-        "diet":"" };
+        "diet":"",
+      "disease":"" };
       //this.getdiet(obj);
   		this.patientdataservice.postPatientDetails(obj).subscribe((res) =>{
         this.messageService.showSaved();
         this.x=1;
         this.diet=res.diet;
+        this.disease=res.disease;
   		},(res:Response) =>{})
 
     }

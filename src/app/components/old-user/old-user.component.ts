@@ -69,7 +69,7 @@ export class OldUserComponent implements OnInit {
   tempSimilarity: number;
   plateletSimilarity: number;
   diet:string;
-
+  disease:string;
   totalSimilarityComplex: number;
 
   constructor(private patientdataservice : PatientDataService) { }
@@ -115,6 +115,7 @@ export class OldUserComponent implements OnInit {
       this.tempWeight=this.data.tempWeight;
       this.plateletWeight=this.data.plateletWeight;
       this.diet=this.data.diet;
+      this.disease=this.data.disease;
     }, (error) =>{
     })
     }

@@ -74,6 +74,7 @@ export class UserdetailsComponent implements OnInit {
   totalSimilarityComplex: number;
   x:number=0;
   diet:string;
+  disease:string;
 
   constructor(private patientdataservice : PatientDataService,
     private messageService: MessageService) { }
@@ -154,6 +155,7 @@ export class UserdetailsComponent implements OnInit {
     this.tempWeight=this.data.tempWeight;
     this.plateletWeight=this.data.plateletWeight;
     this.diet=this.data.diet;
+    this.disease=this.data.disease;
     }, (error) =>{
     })
     }
@@ -284,7 +286,8 @@ export class UserdetailsComponent implements OnInit {
       "tempSimilarity":this.tempSimilarity,
       "plateletSimilarity":this.plateletSimilarity,
       "totalSimilarityComplex":this.totalSimilarityComplex,
-      "diet":this.diet};
+      "diet":this.diet,
+      "disease":this.disease};
       this.patientdataservice.putPatientDetails(obj).subscribe((res) =>{
         this.messageService.showUpdated();
         this.get();
