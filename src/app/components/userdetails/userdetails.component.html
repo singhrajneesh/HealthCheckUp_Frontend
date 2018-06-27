@@ -7,6 +7,7 @@
     <button class="btn btn-primary float-right" type="submit" routerLink="/olduser">Search User</button>
 </div>
 </nav>
+<div  *ngIf="x==0; else elseBlock">
 <div class="py-5 text-white opaque-overlay" style="background-image: url(./../../../assets/yoga.jpeg);" >
 <form class="col-12">
 	<div class="form-row">
@@ -214,3 +215,10 @@
 </div>
 </form>
 </div>
+</div>
+<ng-template #elseBlock>
+	<div class="container bg-grey" >
+		<h2 class="mt-5">Diet and Exercise Plan</h2>
+			<p class="text-dark mt-5">{{diet}}</p>
+	</div>
+</ng-template>

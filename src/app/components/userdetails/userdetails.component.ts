@@ -72,7 +72,8 @@ export class UserdetailsComponent implements OnInit {
   plateletSimilarity: number;
 
   totalSimilarityComplex: number;
-
+  x:number=0;
+  diet:string;
 
   constructor(private patientdataservice : PatientDataService,
     private messageService: MessageService) { }
@@ -152,6 +153,7 @@ export class UserdetailsComponent implements OnInit {
     this.alkalineWeight=this.data.alkalineWeight;
     this.tempWeight=this.data.tempWeight;
     this.plateletWeight=this.data.plateletWeight;
+    this.diet=this.data.diet;
     }, (error) =>{
     })
     }
@@ -281,10 +283,12 @@ export class UserdetailsComponent implements OnInit {
       "alkalineSimilarity":this.alkalineSimilarity,
       "tempSimilarity":this.tempSimilarity,
       "plateletSimilarity":this.plateletSimilarity,
-      "totalSimilarityComplex":this.totalSimilarityComplex };
+      "totalSimilarityComplex":this.totalSimilarityComplex,
+      "diet":this.diet};
       this.patientdataservice.putPatientDetails(obj).subscribe((res) =>{
-        this.get();
         this.messageService.showUpdated();
+        this.get();
+        this.x=1;
       },(res:Response) =>{})
     }
     }

@@ -78,7 +78,7 @@ export class NewUserComponent implements OnInit {
 
   			  totalSimilarityComplex: number;
 
-          x:number;
+          x:number=0;
           diet:string;
 
   	add(){
@@ -135,11 +135,15 @@ export class NewUserComponent implements OnInit {
   		"alkalineSimilarity":0,
   		"tempSimilarity":0,
   		"plateletSimilarity":0,
-  		"totalSimilarityComplex":0  };
+  		"totalSimilarityComplex":0,
+        "diet":"" };
+      //this.getdiet(obj);
   		this.patientdataservice.postPatientDetails(obj).subscribe((res) =>{
         this.messageService.showSaved();
+        this.x=1;
+        this.diet=res.diet;
   		},(res:Response) =>{})
-      this.getdiet(obj);
+
     }
 
     getdiet(obj)

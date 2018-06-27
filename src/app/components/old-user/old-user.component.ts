@@ -68,6 +68,7 @@ export class OldUserComponent implements OnInit {
   alkalineSimilarity: number;
   tempSimilarity: number;
   plateletSimilarity: number;
+  diet:string;
 
   totalSimilarityComplex: number;
 
@@ -113,6 +114,7 @@ export class OldUserComponent implements OnInit {
       this.alkalineWeight=this.data.alkalineWeight;
       this.tempWeight=this.data.tempWeight;
       this.plateletWeight=this.data.plateletWeight;
+      this.diet=this.data.diet;
     }, (error) =>{
     })
     }
